@@ -1,0 +1,50 @@
+.autocomplete {
+	position: relative;
+}
+
+.results {
+	padding: 0;
+	margin: 0;
+	border: 1px solid #eeeeee;
+	height: 120px;
+	overflow: auto;
+}
+
+.result {
+	list-style: none;
+	text-align: left;
+	padding: 4px 2px;
+	cursor: pointer;
+}
+
+.text-input {
+	height: 25px;
+	border-radius: 8px;
+	font-size: large;
+}
+
+.result.is-active,
+.result:hover {
+	background-color: #3399ff;
+	color: white;
+}
+
+.plain-text {
+	font-weight: 600;
+	margin: 15px;
+}
+
+.searchbar {
+	margin: 15px 0;
+}
+
+.search-button {
+	margin: 5px;
+    height: 25px;
+    border-radius: 6px;
+	cursor: pointer;
+}
+
+.disabled {
+	cursor: auto;
+}

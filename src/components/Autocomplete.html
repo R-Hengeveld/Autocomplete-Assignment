@@ -1,0 +1,53 @@
+<div class="autocomplete">
+  <span class="plain-text">
+    Currently searching: {{ citySearch ? 'Cities' : 'Books' }}</span
+  >
+  <div class="searchbar">
+    <input
+      type="text"
+      class="text-input"
+      @input="onChange"
+      v-model="search"
+      @keydown.down="onArrowDown"
+      @keydown.up="onArrowUp"
+      @keydown.enter="onEnter"
+      ref="search"
+    />
+    <button
+      class="search-button"
+      :class="{'disabled': !citySearch }"
+      :disabled="!citySearch"
+      @click="changeSearch()"
+    >
+      Search for books
+    </button>
+    <button
+      class="search-button"
+      :class="{'disabled': citySearch }"
+      :disabled="citySearch"
+      @click="changeSearch()"
+    >
+      Search for cities
+    </button>
+  </div>
+  <ul v-show="isOpen" class="results">
+    <li
+      v-if="!noResults"
+      v-for="(result, i) in results"
+      :key="i"
+      @click="setResult(result)"
+      class="result"
+      :class="{ 'is-active': i === arrowCounter }"
+    >
+      <div>
+        {{ citySearch ? result : (result.title + ' by ' + result.author) }}
+      </div>
+    </li>
+    <div class="plain-text" v-else="noResults">
+      There are no results for your query
+    </div>
+  </ul>
+  <span class="plain-text" v-show="!isOpen"
+    >Type at least 3 characters to start searching...</span
+  >
+</div>
